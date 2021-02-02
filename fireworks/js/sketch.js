@@ -1,22 +1,29 @@
 let fireworks = []
-const totalFirework = 10
+    //number of fireworks going up
+const totalFirework = 30
+const totalDots = 30
 
 function setup() {
-    // put setup code here
     createCanvas(windowWidth, windowHeight)
     background(40)
     strokeWeight(2)
     for (let i = 0; i < totalFirework; i++) {
-        fireworks.push(new Spread(random(0, width), height, 0, random(-10, -15), i))
+        fireworks.push(new Spread(random(0, width), height, 0, random(-10, -15), i, totalDots))
     }
-    // frameRate(10)
+    frameRate(25)
 }
 
 function draw() {
     // put drawing code here
-    background(40, 30)
+    //opacity gives a nice after effect
+    background(40, 20)
+
+
     fireworks.forEach(firework => {
-        firework.show()
+        //Stop showing after explosion
+        if (!firework.isExplosionTime()) {
+            firework.show()
+        }
         firework.move()
         firework.applyForce(.2)
         firework.explode()

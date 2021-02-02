@@ -1,16 +1,18 @@
 class Particle {
-    constructor(posX, posY, vx, vy, counter) {
+    constructor(posX, posY, vx, vy, counter, firedots) {
         this.position = createVector(posX, posY)
         this.velocity = createVector(vx, vy)
         this.accelaration = createVector()
         this.radius = 2
         this.fireworks = []
-        this.firedots = 40
+        this.firedots = firedots
         this.counter = counter
         this.opacity = 255
+        this.col = color(random(200), random(100, 220), random(100))
+
     }
     show = () => {
-        stroke(255, this.opacity)
+        stroke(this.col, this.opacity)
         ellipse(this.position.x, this.position.y, this.radius, this.radius)
     }
     move = () => {
@@ -26,13 +28,13 @@ class Particle {
     }
     fadeOut = () => {
 
-        this.opacity -= 5
+        this.opacity -= 15
         if (this.opacity <= 0) {
             this.ended()
         }
     }
     ended = () => {
-        fireworks[this.counter] = new Spread(random(0, width), height, 0, random(-10, -15), this.counter)
+        fireworks[this.counter] = new Spread(random(0, width), height, 0, random(-10, -15), this.counter, this.firedots)
     }
 
 }
