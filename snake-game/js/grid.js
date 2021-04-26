@@ -1,9 +1,9 @@
 class Grid {
-    constructor(rows,columns) {
-        this.rows = rows;
-        this.columns = columns;
-        this.cellHeight = height/rows;
-        this.cellWidth = width/columns;
+    constructor(gridSize) {
+        this.rows = gridSize.rows;
+        this.columns = gridSize.columns;
+        this.cellHeight = height/gridSize.rows;
+        this.cellWidth = width/gridSize.columns;
     }
     // getGridData = () => {
     //     return {

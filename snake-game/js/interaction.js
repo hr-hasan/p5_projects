@@ -38,6 +38,9 @@ function keyPressed() {
            }
            
             break;
+            case 'a':
+                food.pickNewLocation();
+                break;
 
 
     }

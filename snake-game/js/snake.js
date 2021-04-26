@@ -1,12 +1,12 @@
 class Snake {
     
-    constructor(rows,columns) {
+    constructor(gridSize) {
         // let grid = mainGrid.getGridData();
         //Grid System Data Here
-        this.rows = rows;
-        this.columns = columns;
-        this.cellHeight = height/rows;
-        this.cellWidth = width/columns;
+        this.rows = gridSize.rows;
+        this.columns = gridSize.columns;
+        this.cellHeight = height/gridSize.rows;
+        this.cellWidth = width/gridSize.columns;
         //Grid System Data
 
         this.position = createVector(
@@ -17,8 +17,14 @@ class Snake {
         //console.log(this.position.x,this.position.y);
     }
     display = () => {
+        fill(200);
         rect(this.position.x,this.position.y, this.cellWidth,this.cellHeight);
     }
+
+    generateFood = () => {
+
+    }
+
     changeDirection = (direction) => {
         if(direction == 'up') {
             this.velocity.x = 0;
@@ -45,6 +51,8 @@ class Snake {
         noLoop();
         console.log('go2');         
     }
+
+    
     isValidMove = (dirX,dirY) => {
         if (dirX == 0) {
             if(this.velocity.y == -dirY * this.cellHeight)  {
